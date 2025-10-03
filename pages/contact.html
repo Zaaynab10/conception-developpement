@@ -241,5 +241,106 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("contact-form");
+  const nameInput = document.getElementById("name");
+  const emailInput = document.getElementById("email");
+  const messageInput = document.getElementById("message");
+
+  const errorName = document.getElementById("error-name");
+  const errorEmail = document.getElementById("error-email");
+  const errorMessage = document.getElementById("error-message");
+  const feedback = document.getElementById("form-feedback");
+
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  const nameRegex = /^[a-zA-ZÀ-ÿ\s'-]{2,50}$/;
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let valid = true;
+    let errors = [];
+
+    errorName.textContent = "";
+    errorEmail.textContent = "";
+    errorMessage.textContent = "";
+    feedback.textContent = "";
+    feedback.classList.remove("text-success", "text-danger");
+
+    nameInput.classList.remove("is-invalid");
+    emailInput.classList.remove("is-invalid");
+    messageInput.classList.remove("is-invalid");
+
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
+    const message = messageInput.value.trim();
+
+    if (name.length === 0) {
+      const msg = "Le nom est obligatoire.";
+      errorName.textContent = "❌ " + msg;
+      errors.push(msg);
+      nameInput.classList.add("is-invalid");
+      valid = false;
+    } else if (name.length < 2) {
+      const msg = "Le nom doit contenir au moins 2 caractères.";
+      errorName.textContent = "❌ " + msg;
+      errors.push(msg);
+      nameInput.classList.add("is-invalid");
+      valid = false;
+    } else if (!nameRegex.test(name)) {
+      const msg = "Le nom ne peut contenir que des lettres, espaces, tirets ou apostrophes (max 50 caractères).";
+      errorName.textContent = "❌ " + msg;
+      errors.push(msg);
+      nameInput.classList.add("is-invalid");
+      valid = false;
+    }
+
+    if (email.length === 0) {
+      const msg = "L’email est obligatoire.";
+      errorEmail.textContent = "❌ " + msg;
+      errors.push(msg);
+      emailInput.classList.add("is-invalid");
+      valid = false;
+    } else if (!emailRegex.test(email)) {
+      const msg = "Veuillez entrer une adresse email valide (exemple : nom@domaine.com).";
+      errorEmail.textContent = "❌ " + msg;
+      errors.push(msg);
+      emailInput.classList.add("is-invalid");
+      valid = false;
+    }
+
+    if (message.length === 0) {
+      const msg = "Le message est obligatoire.";
+      errorMessage.textContent = "❌ " + msg;
+      errors.push(msg);
+      messageInput.classList.add("is-invalid");
+      valid = false;
+    } else if (message.length < 10) {
+      const msg = "Le message doit contenir au moins 10 caractères.";
+      errorMessage.textContent = "❌ " + msg;
+      errors.push(msg);
+      messageInput.classList.add("is-invalid");
+      valid = false;
+    } else if (message.length > 1000) {
+      const msg = "Le message ne peut pas dépasser 1000 caractères.";
+      errorMessage.textContent = "❌ " + msg;
+      errors.push(msg);
+      messageInput.classList.add("is-invalid");
+      valid = false;
+    }
+
+    if (valid) {
+      feedback.textContent = "✅ Merci ! Votre message est en cours d’envoi...";
+      feedback.classList.add("text-success");
+      form.reset();
+    } else {
+      feedback.innerHTML = "⚠️ Erreurs détectées :<br>- " + errors.join("<br>- ");
+      feedback.classList.add("text-danger");
+    }
+  });
+});
+
+    </script>
   </body>
 </html>
