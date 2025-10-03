@@ -1,16 +1,14 @@
-// Variables couleurs premium rouges/noir/blanc
 $color-red-main: #B8002E;
 $color-red-strong: #E01344;
 $color-black: #181818;
 $color-white: #FFFFFF;
 $color-gray-soft: #F5F5F5;
 
-$brand-primary: $color-red-main; // Pour Bootstrap override
+$brand-primary: $color-red-main; 
 $brand-accent: $color-red-strong;
 $brand-bg: $color-white;
 $brand-dark: $color-black;
 
-// Typographies premium élégantes
 $font-main: 'Montserrat', 'Lora', 'sans-serif';
 $font-headers: 'Playfair Display', 'Montserrat', 'Serif', 'sans-serif';
 
