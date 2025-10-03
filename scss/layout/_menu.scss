@@ -1,0 +1,50 @@
+@use '../utils/variables' as v;
+
+.filter-form {
+  background: v.$bg-secondary;
+  border-bottom: 1px solid v.$border-light;
+  padding: v.$spacing-xl 0;
+}
+
+.filter-label {
+  color: v.$text-heading !important;
+  font-weight: v.$font-semibold;
+  font-size: v.$text-lg;
+  margin-bottom: 0;
+}
+
+.form-select {
+  border: 2px solid v.$border-medium;
+  border-radius: v.$radius-lg;
+  padding: v.$spacing-md v.$spacing-lg;
+  font-weight: v.$font-medium;
+  transition: all 0.3s ease;
+  min-width: 250px;
+  color: v.$text-body;
+  background-color: v.$bg-primary;
+  
+  &:focus {
+    border-color: v.$primary;
+    box-shadow: 0 0 0 3px rgba(v.$primary, 0.1);
+  }
+  
+  &:hover {
+    border-color: v.$primary;
+  }
+}
+
+@media (max-width: 768px) {
+  .filter-form {
+    padding: v.$spacing-lg 0;
+    
+    .row {
+      flex-direction: column;
+      gap: v.$spacing-md;
+    }
+  }
+  
+  .form-select {
+    min-width: 100%;
+    max-width: 300px;
+  }
+}

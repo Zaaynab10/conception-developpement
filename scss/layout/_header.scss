@@ -1,0 +1,61 @@
+@use '../utils/variables' as v;
+
+.header {
+  background: rgb(255, 255, 255) !important;
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid v.$border-light;
+  transition: all 0.3s ease;
+  
+  &.scrolled {
+    background: rgba(v.$bg-primary, 0.98) !important;
+    box-shadow: v.$shadow-md;
+  }
+}
+
+.navbar-brand {
+  .logo {
+    transition: transform 0.3s ease;
+    height: 48px;
+    width: auto;
+    
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}
+
+.nav-link {
+  color: v.$text-body !important;
+  font-weight: v.$font-medium;
+  padding: v.$spacing-sm v.$spacing-md !important;
+  border-radius: v.$radius-md;
+  transition: all 0.3s ease;
+  position: relative;
+  
+  &:hover,
+  &.active {
+    color: v.$primary !important;
+    background: rgba(v.$primary, 0.08);
+  }
+  
+  &.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 2px;
+    background: v.$primary;
+    border-radius: 1px;
+  }
+}
+
+.navbar-toggler {
+  border: 1px solid v.$border-light;
+  padding: v.$spacing-xs v.$spacing-sm;
+  
+  &:focus {
+    box-shadow: 0 0 0 2px rgba(v.$primary, 0.1);
+  }
+}

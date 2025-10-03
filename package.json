@@ -1,0 +1,14 @@
+{
+  "name": "projet-conception-dev-frontend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+ "scripts": {
+  "sass": "sass scss/style.scss css/style.css --watch"
+}
+,
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}
